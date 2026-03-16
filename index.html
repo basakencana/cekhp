@@ -110,6 +110,7 @@ transform:translateY(0);
 <section class="hero">
 <div class="card">
 <h1 class="fade-up">Welcome to MySite 🚀</h1>
+<div id="hpBrand"></div>
 <p class="fade-up delay">
 Professional modern website running from your own server.
 <p id="device" class="fade-up delay2"></p>
@@ -188,6 +189,56 @@ function getLocation() {
     );
 }
 </script>
+
+<script>
+function getDeviceInfo() {
+    const info = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        screen: screen.width + "x" + screen.height
+    };
+
+    console.log(info);
+
+    document.getElementById("deviceInfo").innerHTML =
+        "Device Info:<br>" +
+        "Platform: " + info.platform + "<br>" +
+        "Language: " + info.language + "<br>" +
+        "Screen: " + info.screen;
+}
+
+getDeviceInfo();
+</script>
+
+<script>
+function detectPhoneBrand() {
+    const ua = navigator.userAgent;
+
+    let brand = "Unknown Device";
+
+    if (/Samsung/i.test(ua) || /SM-/i.test(ua))
+        brand = "Samsung";
+    else if (/Xiaomi|Redmi|Mi/i.test(ua))
+        brand = "Xiaomi";
+    else if (/OPPO/i.test(ua))
+        brand = "Oppo";
+    else if (/Vivo/i.test(ua))
+        brand = "Vivo";
+    else if (/Realme/i.test(ua))
+        brand = "Realme";
+    else if (/iPhone/i.test(ua))
+        brand = "Apple iPhone";
+    else if (/Huawei/i.test(ua))
+        brand = "Huawei";
+
+    document.getElementById("hpBrand").innerHTML =
+        "Merk HP: " + brand;
+}
+
+detectPhoneBrand();
+</script>
+
 </body>
 </html>
 
